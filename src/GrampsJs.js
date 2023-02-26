@@ -468,9 +468,9 @@ export class GrampsJs extends LitElement {
               <span>${this._('Home Page')}</span>
               <mwc-icon slot="graphic">home</mwc-icon>
             </grampsjs-list-item>
-            <grampsjs-list-item href="${BASE_DIR}/blog" graphic="icon">
-              <span>${this._('Blog')}</span>
-              <mwc-icon slot="graphic">rss_feed</mwc-icon>
+            <grampsjs-list-item href="${BASE_DIR}/tree" graphic="icon">
+              <span>${this._('Family Tree')}</span>
+              <mwc-icon slot="graphic">${renderIcon(mdiFamilyTree)}</mwc-icon>
             </grampsjs-list-item>
             <grampsjs-list-item href="${BASE_DIR}/people" graphic="icon">
               <span>${this._('Lists')}</span>
@@ -480,11 +480,11 @@ export class GrampsJs extends LitElement {
               <span>${this._('Map')}</span>
               <mwc-icon slot="graphic">map</mwc-icon>
             </grampsjs-list-item>
-            <grampsjs-list-item href="${BASE_DIR}/tree" graphic="icon">
-              <span>${this._('Family Tree')}</span>
-              <mwc-icon slot="graphic">${renderIcon(mdiFamilyTree)}</mwc-icon>
-            </grampsjs-list-item>
             <li divider padded role="separator"></li>
+            <grampsjs-list-item href="${BASE_DIR}/blog" graphic="icon">
+              <span>${this._('Blog')}</span>
+              <mwc-icon slot="graphic">rss_feed</mwc-icon>
+            </grampsjs-list-item>
             <grampsjs-list-item href="${BASE_DIR}/recent" graphic="icon">
               <span>${this._('History')}</span>
               <mwc-icon slot="graphic">history</mwc-icon>
