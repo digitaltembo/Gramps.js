@@ -17,14 +17,19 @@ export class GrampsjsViewTreeChartBase extends GrampsjsView {
           margin: 0;
           margin-top: -4px;
         }
-
+        #controls {
+          display: flex;
+        }
+        .spacer {
+          flex-grow: 1;
+        }
         #controls mwc-icon-button {
           color: rgba(0, 0, 0, 0.35);
           --mdc-icon-size: 26px;
           --mdc-theme-text-disabled-on-light: rgba(0, 0, 0, 0.1);
         }
 
-        #menu-controls mwc-textfield {
+        .narrow-textfield {
           width: 4em;
         }
       `,
@@ -84,49 +89,38 @@ export class GrampsjsViewTreeChartBase extends GrampsjsView {
         <mwc-icon-button
           @click=${this._goToPerson}
         >${renderIcon(mdiAccountDetails)}</mwc-icon-button>
-        <mwc-icon-button
-          icon="settings"
-          id="btn-controls"
-          @click=${this._openMenuControls}
-        ></mwc-icon-button>
-        <mwc-dialog id="menu-controls">
-          <table>
-            <tr>
-              <td>${this._('Max Ancestor Generations')}</td>
-              <td>
-                <mwc-textfield
-                  value=${this.nAnc}
-                  type="number"
-                  min="1"
-                  @change=${this._handleChangeAnc}
-                ></mwc-textfield>
-              </td>
-            </tr>
-            ${
-              this._setDesc
-                ? html`
-                    <tr>
-                      <td>${this._('Max Descendant Generations')}</td>
-                      <td>
-                        <mwc-textfield
-                          value=${this.nDesc}
-                          type="number"
-                          min="0"
-                          @change=${this._handleChangeDesc}
-                        ></mwc-textfield>
-                      </td>
-                    </tr>
-                  `
-                : ''
-            }
-          </table>
-          <mwc-button slot="primaryAction" dialogAction="close"
-            >${this._('done')}</mwc-button
-          >
-          <mwc-button slot="secondaryAction" @click="${this._resetLevels}"
-            >${this._('Reset')}</mwc-button
-          >
-        </mwc-dialog>
+        <span class="spacer"></span>
+        <span>
+          <label for="max-anc-gens">${this._(
+            'Max Ancestor Generations'
+          )}</label>
+
+          <mwc-textfield
+            value=${this.nAnc}
+            type="number"
+            min="1"
+            @change=${this._handleChangeAnc}
+            id="max-anc-gens"
+            class="narrow-textfield"
+          ></mwc-textfield>
+          ${
+            this._setDesc
+              ? html`
+                  <label for="max-desc-gens"
+                    >${this._('Max Descendant Generations')}</label
+                  >
+                  <mwc-textfield
+                    value=${this.nDesc}
+                    type="number"
+                    min="0"
+                    @change=${this._handleChangeDesc}
+                    id="max-desc-gens"
+                    class="narrow-textfield"
+                  ></mwc-textfield>
+                `
+              : ''
+          }
+        </span>
       </div>
 
     `
@@ -207,10 +201,5 @@ export class GrampsjsViewTreeChartBase extends GrampsjsView {
 
   _handleChangeDesc(e) {
     this.nDesc = parseInt(e.target.value, 10)
-  }
-
-  _openMenuControls() {
-    const menu = this.shadowRoot.getElementById('menu-controls')
-    menu.open = true
   }
 }
