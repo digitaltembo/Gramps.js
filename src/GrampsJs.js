@@ -592,7 +592,7 @@ export class GrampsJs extends LitElement {
             <grampsjs-view-tree
               class="page"
               ?active=${this._page === 'tree'}
-              grampsId="${this.settings.homePerson}"
+              grampsId="${this._pageId || this.settings.homePerson}"
               .strings="${this._strings}"
               .settings="${this.settings}"
             ></grampsjs-view-tree>

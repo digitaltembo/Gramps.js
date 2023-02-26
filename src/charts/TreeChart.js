@@ -136,6 +136,7 @@ export function TreeChart(
     .attr('id', d => d.data.id) // Unique id for each rect
 
   function clicked(event, d) {
+    console.log('trying to nav?', d.data?.person?.gramps_id)
     dispatchEvent(
       new CustomEvent('pedigree:person-selected', {
         bubbles: true,
@@ -143,6 +144,8 @@ export function TreeChart(
         detail: {grampsId: d.data?.person?.gramps_id},
       })
     )
+
+    window.history.pushState({}, '', `tree/${d.data?.person?.gramps_id}`)
   }
 
   node

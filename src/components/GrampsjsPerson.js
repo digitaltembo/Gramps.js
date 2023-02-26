@@ -138,7 +138,7 @@ export class GrampsjsPerson extends GrampsjsObject {
       new CustomEvent('nav', {
         bubbles: true,
         composed: true,
-        detail: {path: 'tree'},
+        detail: {path: `tree/${this.data.gramps_id}`},
       })
     )
   }

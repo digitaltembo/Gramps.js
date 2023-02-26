@@ -63,6 +63,7 @@ export class GrampsjsViewTree extends GrampsjsView {
 
   constructor() {
     super()
+    console.log('making grampsJs view!')
     this.grampsId = ''
     this.view = 'ancestor'
     this._history = this.grampsId ? [this.grampsId] : []
@@ -70,6 +71,7 @@ export class GrampsjsViewTree extends GrampsjsView {
   }
 
   renderContent() {
+    console.log('rendering grampsJs view!')
     if (this.grampsId === '') {
       return html`
         <div class="with-margin">

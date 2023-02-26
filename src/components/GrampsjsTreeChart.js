@@ -53,6 +53,12 @@ class GrampsjsTreeChart extends GrampsjsTranslateMixin(LitElement) {
   }
 
   render() {
+    const person = getPersonByGrampsId(this.data, this.grampsId)
+    if (person.profile) {
+      document.title = `${person.profile.name_given} ${person.profile.name_surname} Tree`
+    } else {
+      document.title = 'Tree'
+    }
     if (this.data.length === 0 || !this.grampsId) {
       return ''
     }
