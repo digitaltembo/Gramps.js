@@ -24,7 +24,7 @@ jobs:
       - name: Build image
         run: |
           cd demo && docker build . \
-            --tag gcr.io/gramps-web-demo/gcp-api:latest \
+            --tag gcr.io/digitaltembo/gcp-api:latest \
             -f Dockerfile
   deploy:
     runs-on: ubuntu-latest
@@ -41,4 +41,4 @@ jobs:
         uses: "google-github-actions/deploy-cloudrun@v0"
         with:
           service: "gcp-api"
-          image: "gcr.io/gramps-web-demo/gcp-api:latest"
+          image: "gcr.io/digitaltembo/gcp-api:latest"
